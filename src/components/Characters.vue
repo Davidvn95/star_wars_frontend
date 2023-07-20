@@ -4,8 +4,14 @@ import { ref } from "vue";
 const data = ref(null);
 const error = ref(null);
 
-fetch("34.125.25.44:8000/characters")
-    .then((res) => res.json())
+fetch("http://34.125.25.44:8000/characters")
+    .then((res) => {
+        console.log(res);
+        if (typeof res === 'object') {
+            return res.json()
+        }
+        else throw new Error('La respuesta no es un JSON valido');
+    })
     .then((json) => (data.value = json))
     .catch((err) => (error.value = err));
 </script>

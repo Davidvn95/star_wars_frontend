@@ -4,7 +4,7 @@ import { ref } from "vue";
 const data = ref(null);
 const error = ref(null);
 
-fetch("http://localhost:8000/characters")
+fetch("34.125.25.44:8000/characters")
     .then((res) => res.json())
     .then((json) => (data.value = json))
     .catch((err) => (error.value = err));
